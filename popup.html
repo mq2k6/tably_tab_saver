@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tably</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header>
+    <img src="icons/icon32.png" alt="" width="24" height="24" />
+    <h1>Tably</h1>
+  </header>
+
+  <section class="save">
+    <div class="row">
+      <input type="text" id="sessionName" placeholder="Session name" maxlength="80" autocomplete="off" />
+      <button id="save" class="primary">Save</button>
+    </div>
+    <div class="scope" role="radiogroup" aria-label="What to save">
+      <label><input type="radio" name="scope" value="window" checked /> This window</label>
+      <label><input type="radio" name="scope" value="all" /> All windows</label>
+    </div>
+  </section>
+
+  <div id="messageBox" role="status" aria-live="polite"></div>
+
+  <section class="list">
+    <input type="search" id="filter" placeholder="Search sessions" autocomplete="off" />
+    <ul id="sessionList"></ul>
+    <p id="empty" class="muted" hidden>No saved sessions yet.</p>
+  </section>
+
+  <footer>
+    <button id="export" class="link">Export</button>
+    <button id="import" class="link">Import</button>
+    <input type="file" id="importFile" accept="application/json,.json" hidden />
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>

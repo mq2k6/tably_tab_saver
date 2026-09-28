@@ -1,0 +1,117 @@
+:root {
+  --bg: #ffffff;
+  --fg: #1f1f1f;
+  --muted: #6b6b6b;
+  --line: #e4e4e4;
+  --hover: #f3f3f3;
+  --accent: #1a73e8;
+  --accent-fg: #ffffff;
+  --danger: #c5221f;
+  --ok-bg: #e6f4ea;
+  --ok-fg: #137333;
+  --err-bg: #fce8e6;
+  --err-fg: #a50e0e;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #202124;
+    --fg: #e8eaed;
+    --muted: #9aa0a6;
+    --line: #3c4043;
+    --hover: #2d2e31;
+    --accent: #8ab4f8;
+    --accent-fg: #202124;
+    --danger: #f28b82;
+    --ok-bg: #1e3a2a;
+    --ok-fg: #81c995;
+    --err-bg: #3c1f1f;
+    --err-fg: #f28b82;
+  }
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  width: 360px;
+  max-height: 580px;
+  font: 13px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+}
+body.full { width: auto; max-width: 560px; margin: 24px auto; }
+
+header {
+  display: flex; align-items: center; gap: 8px;
+  padding: 12px 14px 8px;
+}
+header img { border-radius: 6px; }
+h1 { font-size: 16px; margin: 0; }
+
+section { padding: 0 14px; }
+.row { display: flex; gap: 6px; }
+
+input[type="text"], input[type="search"] {
+  flex: 1; width: 100%;
+  padding: 7px 9px;
+  border: 1px solid var(--line); border-radius: 6px;
+  background: var(--bg); color: var(--fg);
+  font: inherit;
+}
+input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+
+button {
+  font: inherit; cursor: pointer;
+  border: 1px solid var(--line); border-radius: 6px;
+  background: var(--bg); color: var(--fg);
+  padding: 5px 10px;
+}
+button:hover { background: var(--hover); }
+button.primary { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); font-weight: 600; }
+button.primary:hover { filter: brightness(1.08); }
+button.danger { color: var(--danger); }
+button.danger.armed { background: var(--danger); color: var(--bg); border-color: var(--danger); }
+button.link { border: none; background: none; color: var(--accent); padding: 4px 6px; }
+button:disabled { opacity: .5; cursor: default; }
+
+.scope { display: flex; gap: 14px; margin: 8px 0 4px; color: var(--muted); }
+.scope label { display: flex; align-items: center; gap: 4px; cursor: pointer; }
+
+#messageBox { margin: 8px 14px 0; border-radius: 6px; font-weight: 600; }
+#messageBox:empty { display: none; }
+#messageBox.info  { padding: 7px 10px; background: var(--ok-bg);  color: var(--ok-fg); }
+#messageBox.error { padding: 7px 10px; background: var(--err-bg); color: var(--err-fg); }
+
+.list { margin-top: 10px; border-top: 1px solid var(--line); padding-top: 10px; }
+#sessionList { list-style: none; margin: 8px 0 0; padding: 0; max-height: 340px; overflow-y: auto; }
+.muted { color: var(--muted); }
+
+.session { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; margin-bottom: 6px; }
+.session-head { display: flex; align-items: center; gap: 8px; }
+.session-info { flex: 1; min-width: 0; }
+.session-name {
+  font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  background: none; border: none; padding: 0; text-align: left; width: 100%; color: var(--fg);
+}
+.session-name:hover { background: none; text-decoration: underline; }
+.session-meta { color: var(--muted); font-size: 12px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.dots { display: inline-flex; gap: 3px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.actions { display: flex; gap: 4px; margin-top: 6px; }
+.actions button { padding: 3px 8px; font-size: 12px; }
+
+.preview { margin: 8px 0 0; padding: 0; list-style: none; border-top: 1px dashed var(--line); padding-top: 6px; }
+.preview .grp { margin-top: 6px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+.preview .win { margin-top: 6px; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .04em; }
+.preview .tab {
+  display: flex; align-items: center; gap: 6px; padding: 2px 0 2px 4px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.preview .tab img { width: 14px; height: 14px; flex: none; }
+.preview .tab a { color: var(--fg); text-decoration: none; overflow: hidden; text-overflow: ellipsis; }
+.preview .tab a:hover { text-decoration: underline; }
+.preview .in-group { padding-left: 16px; }
+
+.rename { display: flex; gap: 4px; }
+.rename input { padding: 3px 6px; }
+
+footer { display: flex; justify-content: flex-end; gap: 4px; padding: 6px 10px 10px; border-top: 1px solid var(--line); margin-top: 6px; }
